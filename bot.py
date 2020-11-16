@@ -82,11 +82,8 @@ a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
 Predupr = [
         'Еще раз я услышу это слово, засуну тебе его в ASS.',
         'Харе материться, заебал.',
-        (
-            'Лесные твари, не будьте как твари. '
-            'За мат извинись.'
-        ),
-    ]
+        'Лесные твари, не будьте как твари.',
+        'За мат извинись.']
 @Bot.event
 async def on_message(message):
     if message.author == Bot.user:
@@ -96,7 +93,7 @@ async def on_message(message):
         for word in content:
             if word in a:
                 response = random.choice(Predupr)
-                await message.channel.send(response)
+                await message.channel.send(response, {message.author.mention})
     await Bot.process_commands(message)
 
 @Bot.command()
