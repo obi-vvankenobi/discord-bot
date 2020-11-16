@@ -4,8 +4,6 @@ from config import settings
 import os
 
 Bot = commands.Bot(command_prefix = settings['prefix'])
-client = discord.Client()
-
 
 @Bot.event
 async def on_ready():
@@ -48,12 +46,12 @@ async def ping(ctx):
 #     print('Bot should joined the Channel')
 
 
-@Bot.command()
-async def startq(ctx):
+# @Bot.command()
+# async def startq(ctx):
 
-    VoiceChannel = discord.utils.get(ctx.guild.channels, name='General')
-    vc = await VoiceChannel.connect()
-    vc.play(discord.FFmpegPCMAudio(executable="E:\\Учеба\\Схемотехника\\Библа\\FFmpeg\\bin\\Ffmpeg.exe", source="C:\\Users\\vgorn\\OneDrive\\Рабочий стол\\Bulanova.mp3"))
+#     VoiceChannel = discord.utils.get(ctx.guild.channels, name='General')
+#     vc = await VoiceChannel.connect()
+#     vc.play(discord.FFmpegPCMAudio(executable="E:\\Учеба\\Схемотехника\\Библа\\FFmpeg\\bin\\Ffmpeg.exe", source="C:\\Users\\vgorn\\OneDrive\\Рабочий стол\\Bulanova.mp3"))
 
 # @Bot.command()
 # async def join(ctx):
