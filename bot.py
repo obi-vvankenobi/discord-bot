@@ -2,9 +2,9 @@ import discord
 from discord.ext import commands
 from config import settings
 import os
-
 Bot = commands.Bot(command_prefix = settings['prefix'])
-
+import random
+from discord import Activity, ActivityType
 @Bot.event
 async def on_ready():
     print('Bot is online')
@@ -45,10 +45,15 @@ async def ping(ctx):
 #     voice = discord.Client.join_voice_channel(channel)
 #     print('Bot should joined the Channel')
 
+# @Bot.event
+# async def join():
+#     channel = Bot.get_channel(334456174059585550)
+#     await Bot.join_voice_channel(channel)
+#     print('Bot joined the channel.')
 
 # @Bot.command()
 # async def startq(ctx):
-
+#
 #     VoiceChannel = discord.utils.get(ctx.guild.channels, name='General')
 #     vc = await VoiceChannel.connect()
 #     vc.play(discord.FFmpegPCMAudio(executable="E:\\Учеба\\Схемотехника\\Библа\\FFmpeg\\bin\\Ffmpeg.exe", source="C:\\Users\\vgorn\\OneDrive\\Рабочий стол\\Bulanova.mp3"))
@@ -73,6 +78,26 @@ async def ping(ctx):
 #         await ctx.message.author.voice.channel.connect(reconnect=True)
 #         ctx.voice_client.play(discord.FFmpegPCMAudio("C:\\Users\\vgorn\\OneDrive\\Рабочий стол"), None)
         #ctx.voice_client.play(discord.FFmpegPCMAudio(executable="E:\\Учеба\\Схемотехника\\Библа\\ffmpeg-4.0.2-win32-static", source="C:\\Users\\vgorn\\OneDrive\\Рабочий стол"))
+a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
+Predupr = [
+        'Еще раз я услышу это слово, засуну тебе его в ASS.',
+        'Харе материться, заебал.',
+        (
+            'Лесные твари, не будьте как твари. '
+            'За мат извинись.'
+        ),
+    ]
+@Bot.event
+async def on_message(message):
+    if message.author == Bot.user:
+        return
+    else:
+        content = message.content.split()
+        for word in content:
+            if word in a:
+                response = random.choice(Predupr)
+                await message.channel.send(response)
+    await Bot.process_commands(message)
 
 @Bot.command()
 async def info(ctx, member:discord.Member):
