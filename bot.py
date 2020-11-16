@@ -93,8 +93,8 @@ async def on_message(message):
         for word in content:
             if word in a:
                 response = random.choice(Predupr)
-                await message.channel.send(response, f'{message.author.mention}!')
-                #await message.channel.send(f'{message.author.mention}!')
+                await message.channel.send(f'{message.author.mention}')
+                await message.channel.send(response)
     await Bot.process_commands(message)
 
 @Bot.command()
