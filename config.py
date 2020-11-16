@@ -1,6 +1,6 @@
 settings = {
 
-    'Bot': 'Huilo',
+    'Bot': 'Kersh',
     'id': 777477810872254464,
     'prefix': '!'
 }
