@@ -3,9 +3,6 @@ from discord.ext import commands
 from config import settings
 import os
 import random
-import json
-import requests
-#from wb import poisk
 
 Bot = commands.Bot(command_prefix = settings['prefix'])
 
