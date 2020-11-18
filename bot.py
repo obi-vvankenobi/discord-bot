@@ -3,7 +3,8 @@ from discord.ext import commands
 from config import settings
 import os
 import random
-
+import json
+import requests
 Bot = commands.Bot(command_prefix = settings['prefix'])
 
 from discord import Activity, ActivityType
@@ -52,13 +53,13 @@ async def info(ctx, member:discord.Member):
     emb.set_thumbnail(url=member.avatar_url)
     emb.set_footer(text=f'Caused: {ctx.message.author}', icon_url=ctx.message.author.avatar_url)
     await ctx.send(embed=emb)
-# @Bot.command()
-# async def fox(ctx):
-#     response = requests.get('https://some-random-api.ml/img/fox') # Get-запрос
-#     json_data = json.loads(response.text) # Извлекаем JSON
-#
-#     embed = discord.Embed(color = 0xff9900, title = 'Random Fox') # Создание Embed'a
-#     embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
-#     await ctx.send(embed = embed) # Отправляем Embed
+@Bot.command()
+async def fox(ctx):
+    response = requests.get('https://some-random-api.ml/img/fox') # Get-запрос
+    json_data = json.loads(response.text) # Извлекаем JSON
+
+    embed = discord.Embed(color = 0xff9900, title = 'Random Fox') # Создание Embed'a
+    embed.set_image(url = json_data['link']) # Устанавливаем картинку Embed'a
+    await ctx.send(embed = embed) # Отправляем Embed
 token = os.environ.get('BOT_TOKEN')
 Bot.run(str(token))
