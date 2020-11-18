@@ -24,7 +24,7 @@ async def ping(ctx):
     await ctx.send(f"my ping is {ping}ms")
 
 @commands.command()
-async def join_voice(self, ctx):
+async def join(ctx):
     connected = ctx.author.voice
     if connected:
         await connected.channel.connect()
