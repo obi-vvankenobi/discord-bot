@@ -24,10 +24,13 @@ async def ping(ctx):
     await ctx.send(f"my ping is {ping}ms")
 
 @Bot.command()
-async def join(self, ctx):
-    connected = ctx.author.voice
-    if connected:
-        await connected.channel.connect()
+async def join(ctx):
+    channel = ctx.author.voice.channel
+    if channel:
+        print(channel.id)
+        await channel.connect(reconnect=False)
+    else:
+        await ctx.send('bruh you arent in a vc')
 
 a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
 Predupr = [
