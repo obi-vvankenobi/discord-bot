@@ -5,8 +5,8 @@ import os
 import random
 
 Bot = commands.Bot(command_prefix = settings['prefix'])
+
 client = discord.Client()
-from discord import Activity, ActivityType
 @Bot.event
 async def on_ready():
     print('Bot is online')
@@ -23,7 +23,7 @@ async def ping(ctx):
     ping = round(ping_ * 1000)
     await ctx.send(f"my ping is {ping}ms")
 
-@commands.command()
+@Bot.command()
 async def join(ctx):
     connected = ctx.author.voice
     if connected:
