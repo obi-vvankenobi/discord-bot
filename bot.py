@@ -5,7 +5,7 @@ import os
 import random
 
 Bot = commands.Bot(command_prefix = settings['prefix'])
-
+client = discord.Client()
 from discord import Activity, ActivityType
 @Bot.event
 async def on_ready():
@@ -22,6 +22,12 @@ async def ping(ctx):
     ping_ = Bot.latency
     ping = round(ping_ * 1000)
     await ctx.send(f"my ping is {ping}ms")
+
+@commands.command()
+async def join_voice(self, ctx):
+    connected = ctx.author.voice
+    if connected:
+        await connected.channel.connect()
 
 a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
 Predupr = [
