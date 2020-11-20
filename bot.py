@@ -23,15 +23,6 @@ async def ping(ctx):
     ping = round(ping_ * 1000)
     await ctx.send(f"my ping is {ping}ms")
 
-@Bot.command()
-async def join(ctx):
-    channel = ctx.author.voice.channel
-    if channel:
-        print(channel.id)
-        await channel.connect(reconnect=False)
-    else:
-        await ctx.send('bruh you arent in a vc')
-
 a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
 b = ['извини', 'Извини', 'Извени', 'извени', 'sorry', 'sry', 'izvini', 'izveni', 'Sorry', 'Sry', 'Прошу прощения']
 Predupr = [
@@ -78,14 +69,14 @@ async def join(ctx):
         voice = await channel.connect()
         await ctx.send(f'Бот присоединился к аналу: {channel}')
 
-# @Bot.command()
-# async def leave(ctx):
-#     channel = ctx.message.author.voice.channel
-#     voice = get(client.voice_clients, guild = ctx.guild)
-#     if voice and voice.is_connected():
-#         await voice.disconnect()
-#     else:
-#         await ctx.send(f'Бот отключился от анала: {channel}')
+@Bot.command()
+async def leave(ctx):
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild = ctx.guild)
+    if voice and voice.is_connected():
+        await voice.disconnect()
+    else:
+        await ctx.send(f'Бот отключился от анала: {channel}')
 
 # @Bot.command()
 # async def fox(ctx):
