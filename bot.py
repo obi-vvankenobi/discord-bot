@@ -60,7 +60,7 @@ async def info(ctx, member:discord.Member):
 
 @Bot.command()
 async def join(ctx):
-    global voice
+    #global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients, guild = ctx.guild)
     if voice and voice.is_connected():
