@@ -69,7 +69,7 @@ async def info(ctx, member:discord.Member):
 
 @Bot.command()
 async def join(ctx):
-    # global voice
+    global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients, guild = ctx.guild)
     if voice and voice.is_connected():
@@ -78,14 +78,14 @@ async def join(ctx):
         voice = await channel.connect()
         await ctx.send(f'Бот присоединился к аналу: {channel}')
 
-@Bot.command()
-async def leave(ctx):
-    channel = ctx.message.author.voice.channel
-    voice = get(client.voice_clients, guild = ctx.guild)
-    if voice and voice.is_connected():
-        await voice.disconnect()
-    else:
-        await ctx.send(f'Бот отключился от анала: {channel}')
+# @Bot.command()
+# async def leave(ctx):
+#     channel = ctx.message.author.voice.channel
+#     voice = get(client.voice_clients, guild = ctx.guild)
+#     if voice and voice.is_connected():
+#         await voice.disconnect()
+#     else:
+#         await ctx.send(f'Бот отключился от анала: {channel}')
 
 # @Bot.command()
 # async def fox(ctx):
