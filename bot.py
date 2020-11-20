@@ -39,7 +39,6 @@ Predupr = [
         'Харе материться, заебал.',
         'Лесные твари, не будьте как твари.',
         'За мат извинись.']
-Izvini = ['Нюхай бэбру, пёс']
 @Bot.event
 async def on_message(message):
     if message.author == Bot.user:
@@ -49,7 +48,7 @@ async def on_message(message):
         for word in content:
             if word in b:
                 await message.channel.send(f'{message.author.mention}')
-                await message.channel.send(str(Izvini))
+                await message.channel.send('Нюхай бэбру, пёс')
         for word in content:
             if word in a:
                 response = random.choice(Predupr)
