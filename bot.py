@@ -33,17 +33,23 @@ async def join(ctx):
         await ctx.send('bruh you arent in a vc')
 
 a = ['гей', 'бля', 'заебал', 'сука', 'пизда']
+b = ['извини', 'Извини', 'Извени', 'извени']
 Predupr = [
         'Еще раз я услышу это слово, засуну тебе его в ASS.',
         'Харе материться, заебал.',
         'Лесные твари, не будьте как твари.',
         'За мат извинись.']
+Izvini = ['Нюхай бэбру, пёс']
 @Bot.event
 async def on_message(message):
     if message.author == Bot.user:
         return
     else:
         content = message.content.split()
+        for word in content:
+            if word in b:
+                await message.channel.send(f'{message.author.mention}')
+                await message.channel.send(Izvini)
         for word in content:
             if word in a:
                 response = random.choice(Predupr)
