@@ -3,7 +3,7 @@ from discord.ext import commands
 from config import settings
 import os
 import random
-
+from discord.utils import get
 Bot = commands.Bot(command_prefix = settings['prefix'])
 
 client = discord.Client()
@@ -66,6 +66,28 @@ async def info(ctx, member:discord.Member):
     emb.set_thumbnail(url=member.avatar_url)
     emb.set_footer(text=f'Caused: {ctx.message.author}', icon_url=ctx.message.author.avatar_url)
     await ctx.send(embed=emb)
+
+@Bot.command()
+async def join(ctx):
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild = ctx.guild)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+        await ctx.send(f'Бот присоединился к аналу: {channel}')
+
+@Bot.command()
+async def leave(ctx):
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild = ctx.guild)
+    if voice and voice.is_connected():
+        await voice.disconnect(channel)
+    else:
+        voice = await channel.connect()
+        await ctx.send(f'Бот отключился от анала: {channel}')
+
 # @Bot.command()
 # async def fox(ctx):
 #     response = requests.get('https://some-random-api.ml/img/fox') # Get-запрос
